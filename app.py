@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -20,7 +20,7 @@ class RSVP(db.Model):
     email = db.Column(db.String(120), nullable=False)
     guests = db.Column(db.Integer, default=1)
     message = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __repr__(self):
         return f'<RSVP {self.name}>'
@@ -129,6 +129,10 @@ def init_db():
         user.set_password('20260620')
         db.session.add(user)
         db.session.commit()
+
+@app.route('/test')
+def test():
+    return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
 
 if __name__ == '__main__':
     init_db()
