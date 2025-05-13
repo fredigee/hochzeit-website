@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vielen Dank - Unsere Hochzeit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Vielen Dank für Ihre Antwort!</h1>
+        <p>Wir freuen uns sehr, dass Sie an unserem besonderen Tag teilnehmen werden.</p>
+        <p>Sie erhalten in Kürze eine Bestätigung per E-Mail.</p>
+        <a href="{{ url_for('home') }}" class="button">Zurück zur Startseite</a>
+    </div>
+</body>
+</html> 

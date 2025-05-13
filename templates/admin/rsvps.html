@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Übersicht - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .rsvp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .rsvp-table th,
+        .rsvp-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .rsvp-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .rsvp-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .stat-card p {
+            margin: 0.5rem 0 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>RSVP Übersicht</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Gesamt RSVPs</h3>
+                <p>{{ rsvps|length }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Gesamt Gäste</h3>
+                <p>{{ rsvps|sum(attribute='guests') + rsvps|length }}</p>
+            </div>
+        </div>
+
+        <table class="rsvp-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>Begleitpersonen</th>
+                    <th>Nachricht</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rsvp in rsvps %}
+                <tr>
+                    <td>{{ rsvp.name }}</td>
+                    <td>{{ rsvp.email }}</td>
+                    <td>{{ rsvp.guests }}</td>
+                    <td>{{ rsvp.message or '-' }}</td>
+                    <td>{{ rsvp.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <a href="{{ url_for('home') }}" class="button" style="margin-top: 2rem;">Zurück zur Startseite</a>
+    </div>
+</body>
+</html> 

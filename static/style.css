@@ -1,0 +1,228 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #c0392b;
+    --text-color: #333;
+    --background-color: #fff;
+    --accent-color: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('toskana_entrypage.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.hero-content {
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.date, .location {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--accent-color);
+}
+
+/* RSVP Form Styles */
+.rsvp-container {
+    max-width: 600px;
+    margin: 5rem auto;
+    padding: 2rem;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Thank You Page Styles */
+.thank-you-container {
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.thank-you-container h1 {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+    }
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+.countdown-item span:first-child {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .countdown {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .countdown-item {
+        min-width: 100px;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .countdown-item span:first-child {
+        font-size: 2rem;
+    }
+} 
