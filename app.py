@@ -117,23 +117,23 @@ def admin_rsvps():
 # Erstelle Benutzer beim ersten Start
 def init_db():
     with app.app_context():
-        # Lösche die alte Datenbank, falls sie existiert
-        if os.path.exists('hochzeit.db'):
-            os.remove('hochzeit.db')
-        
-        # Erstelle die Datenbank neu
+        # Erstelle die Datenbank, falls sie nicht existiert
         db.create_all()
         
-        # Erstelle den Benutzer mit dem Passwort
-        user = User()
-        user.set_password('20260620')
-        db.session.add(user)
-        db.session.commit()
+        # Prüfe, ob bereits ein Benutzer existiert
+        if not User.query.first():
+            # Erstelle den Benutzer mit dem Passwort
+            user = User()
+            user.set_password('20260620')
+            db.session.add(user)
+            db.session.commit()
+
+# Initialisiere die Datenbank beim App-Start
+init_db()
 
 @app.route('/test')
 def test():
     return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
 
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True) 
