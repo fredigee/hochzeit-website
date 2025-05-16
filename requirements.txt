@@ -6,4 +6,5 @@ itsdangerous==2.1.2
 click==8.1.7
 Flask-SQLAlchemy==3.0.5
 SQLAlchemy==2.0.20 
+Flask-Login==0.6.3
 gunicorn==21.2.0
