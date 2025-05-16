@@ -54,7 +54,7 @@ def get_time_until_wedding():
 # Einfaches User-Modell mit nur einem Passwort
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    password_hash = db.Column(db.String(120), nullable=False)
+    password_hash = db.Column(db.String(512), nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
