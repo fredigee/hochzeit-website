@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>RSVP Antworten</title>
+</head>
+<body>
+    <h1>Alle RSVP-Antworten</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gäste</th>
+            <th>Nachricht</th>
+            <th>Erstellt am</th>
+        </tr>
+        {% for rsvp in rsvps %}
+        <tr>
+            <td>{{ rsvp.name }}</td>
+            <td>{{ rsvp.email }}</td>
+            <td>{{ rsvp.guests }}</td>
+            <td>{{ rsvp.message }}</td>
+            <td>{{ rsvp.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html> 
