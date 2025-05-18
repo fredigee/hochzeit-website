@@ -25,9 +25,9 @@ h1, h2, h3 {
 }
 
 .hero {
-    height: 100vh;
+    min-height: 60vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('toskana_entrypage.jpg');
+                url('/static/toskana_entrypage.jpg');
     background-size: cover;
     background-position: center;
     color: white;
