@@ -4,11 +4,22 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dein-geheimer-schluessel'  # Ändern Sie dies in einen sicheren Schlüssel
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hochzeit.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# E-Mail Konfiguration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # Ihre E-Mail-Adresse
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # Ihr App-Passwort
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -94,14 +105,23 @@ def rsvp():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
-        guests = int(request.form.get('guests', 1))
+        guests = request.form.get('guests', type=int)
         message = request.form.get('message')
-        
-        new_rsvp = RSVP(name=name, email=email, guests=guests, message=message)
-        db.session.add(new_rsvp)
+
+        if not name or not email:
+            flash('Bitte füllen Sie alle Pflichtfelder aus.')
+            return redirect(url_for('rsvp'))
+
+        rsvp = RSVP(name=name, email=email, guests=guests, message=message)
+        db.session.add(rsvp)
         db.session.commit()
-        
-        return redirect(url_for('thank_you'))
+
+        # Sende E-Mail nur mit dem neuen Eintrag
+        send_rsvp_data(rsvp)
+
+        flash('Vielen Dank für Ihre Anmeldung!')
+        return redirect(url_for('rsvp'))
+
     return render_template('rsvp.html')
 
 @app.route('/thank-you')
@@ -136,6 +156,46 @@ init_db()
 @app.route('/test')
 def test():
     return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
+
+def send_rsvp_data(rsvp):
+    """Sendet nur den neuen RSVP-Eintrag per E-Mail."""
+    try:
+        # Daten des neuen RSVP-Eintrags
+        rsvp_data = {
+            'name': rsvp.name,
+            'email': rsvp.email,
+            'guests': rsvp.guests,
+            'message': rsvp.message,
+            'created_at': rsvp.created_at.isoformat()
+        }
+
+        # E-Mail erstellen
+        msg = MIMEMultipart()
+        msg['From'] = app.config['MAIL_USERNAME']
+        msg['To'] = app.config['MAIL_USERNAME']  # An Sie selbst
+        msg['Subject'] = 'Neuer RSVP für Ihre Hochzeit'
+
+        # E-Mail-Inhalt erstellen
+        body = f"""
+        Neuer RSVP-Eintrag für Ihre Hochzeit:
+
+        {json.dumps(rsvp_data, indent=2, ensure_ascii=False)}
+
+        Diese Daten wurden automatisch generiert.
+        """
+
+        msg.attach(MIMEText(body, 'plain'))
+
+        # E-Mail senden
+        with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
+            server.starttls()
+            server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+            server.send_message(msg)
+
+        return True
+    except Exception as e:
+        print(f"Fehler beim Senden der E-Mail: {str(e)}")
+        return False
 
 if __name__ == '__main__':
     app.run(debug=True) 
