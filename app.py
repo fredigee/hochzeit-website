@@ -120,7 +120,7 @@ def rsvp():
         send_rsvp_data(rsvp)
 
         flash('Vielen Dank für Ihre Anmeldung!')
-        return redirect(url_for('rsvp'))
+        return redirect(url_for('thank_you'))
 
     return render_template('rsvp.html')
 
@@ -128,13 +128,6 @@ def rsvp():
 @login_required
 def thank_you():
     return render_template('thank_you.html')
-
-# Admin-Route zum Anzeigen aller RSVPs
-@app.route('/admin/rsvps')
-@login_required
-def admin_rsvps():
-    rsvps = RSVP.query.order_by(RSVP.created_at.desc()).all()
-    return render_template('admin_rsvps.html', rsvps=rsvps)
 
 # Erstelle Benutzer beim ersten Start
 def init_db():
