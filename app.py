@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from datetime import datetime, timezone
 import os
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import smtplib
@@ -11,32 +10,21 @@ import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dein-geheimer-schluessel'  # Ändern Sie dies in einen sicheren Schlüssel
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hochzeit.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # E-Mail Konfiguration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # Ihre E-Mail-Adresse
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # Ihr App-Passwort
+app.config['MAIL_USERNAME'] = "fj.grieb@gmail.com"  # Hier Ihre Gmail-Adresse eintragen
+app.config['MAIL_PASSWORD'] = "tffn kefw esgu euzm"      # Hier Ihr Gmail-App-Passwort eintragen
 
-db = SQLAlchemy(app)
+# Für Produktion sollten die Umgebungsvariablen verwendet werden:
+# app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+# app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-# Datenbankmodell für RSVP
-class RSVP(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    guests = db.Column(db.Integer, default=1)
-    message = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
-
-    def __repr__(self):
-        return f'<RSVP {self.name}>'
 
 # Hochzeitsdatum
 WEDDING_DATE = datetime(2026, 6, 20)
@@ -56,27 +44,24 @@ def get_time_until_wedding():
     }
 
 # Einfaches User-Modell mit nur einem Passwort
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    password_hash = db.Column(db.String(512), nullable=False)
-
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+class User(UserMixin):
+    id = 1  # Fester Wert, da wir nur einen Benutzer haben
+    password_hash = generate_password_hash('20260620')  # Fester Passwort-Hash
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User() if int(user_id) == 1 else None
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         password = request.form.get('password')
-        user = User.query.first()  # Wir haben nur einen Benutzer
+        user = User()
         
-        if user and user.check_password(password):
+        if user.check_password(password):
             login_user(user)
             return redirect(url_for('index'))
         else:
@@ -105,22 +90,39 @@ def rsvp():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
-        guests = request.form.get('guests', type=int)
+        adults = request.form.get('adults', type=int)
+        children = request.form.get('children', type=int)
+        friday = 'friday' in request.form.getlist('events')
+        saturday = 'saturday' in request.form.getlist('events')
+        sunday = 'sunday' in request.form.getlist('events')
+        not_attending = request.form.get('not_attending') == 'true'
         message = request.form.get('message')
 
         if not name or not email:
-            flash('Bitte füllen Sie alle Pflichtfelder aus.')
+            flash('Bitte füllen Sie alle Pflichtfelder aus.', 'error')
             return redirect(url_for('rsvp'))
 
-        rsvp = RSVP(name=name, email=email, guests=guests, message=message)
-        db.session.add(rsvp)
-        db.session.commit()
+        # RSVP-Daten für E-Mail
+        rsvp_data = {
+            'name': name,
+            'email': email,
+            'adults': adults,
+            'children': children,
+            'friday': friday,
+            'saturday': saturday,
+            'sunday': sunday,
+            'not_attending': not_attending,
+            'message': message,
+            'created_at': datetime.now(timezone.utc).isoformat()
+        }
 
-        # Sende E-Mail nur mit dem neuen Eintrag
-        send_rsvp_data(rsvp)
-
-        flash('Vielen Dank für Ihre Anmeldung!')
-        return redirect(url_for('thank_you'))
+        # Sende E-Mail
+        if send_rsvp_data(rsvp_data):
+            flash('Vielen Dank für deine Antwort! Wir freuen uns über eure Teilnahme.', 'success')
+            return redirect(url_for('thank_you'))
+        else:
+            flash('Es gab einen Fehler beim Senden der Anmeldung. Bitte versuche es später erneut oder kontaktiere uns direkt.', 'error')
+            return redirect(url_for('rsvp'))
 
     return render_template('rsvp.html')
 
@@ -129,65 +131,57 @@ def rsvp():
 def thank_you():
     return render_template('thank_you.html')
 
-# Erstelle Benutzer beim ersten Start
-def init_db():
-    with app.app_context():
-        # Erstelle die Datenbank, falls sie nicht existiert
-        db.create_all()
-        
-        # Prüfe, ob bereits ein Benutzer existiert
-        if not User.query.first():
-            # Erstelle den Benutzer mit dem Passwort
-            user = User()
-            user.set_password('20260620')
-            db.session.add(user)
-            db.session.commit()
-
-# Initialisiere die Datenbank beim App-Start
-init_db()
+@app.route('/location')
+@login_required
+def location():
+    return render_template('location.html')
 
 @app.route('/test')
 def test():
     return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
 
-def send_rsvp_data(rsvp):
-    """Sendet nur den neuen RSVP-Eintrag per E-Mail."""
+def send_rsvp_data(rsvp_data):
+    """Sendet die RSVP-Daten per E-Mail."""
     try:
-        # Daten des neuen RSVP-Eintrags
-        rsvp_data = {
-            'name': rsvp.name,
-            'email': rsvp.email,
-            'guests': rsvp.guests,
-            'message': rsvp.message,
-            'created_at': rsvp.created_at.isoformat()
-        }
-
+        print("Starte E-Mail-Versand...")
+        print(f"Mail-Server: {app.config['MAIL_SERVER']}")
+        print(f"Mail-Port: {app.config['MAIL_PORT']}")
+        print(f"Mail-Username: {app.config['MAIL_USERNAME']}")
+        
         # E-Mail erstellen
         msg = MIMEMultipart()
         msg['From'] = app.config['MAIL_USERNAME']
         msg['To'] = app.config['MAIL_USERNAME']  # An Sie selbst
         msg['Subject'] = 'Neuer RSVP für Ihre Hochzeit'
 
-        # E-Mail-Inhalt erstellen
-        body = f"""
-        Neuer RSVP-Eintrag für Ihre Hochzeit:
-
-        {json.dumps(rsvp_data, indent=2, ensure_ascii=False)}
-
-        Diese Daten wurden automatisch generiert.
-        """
+        # Nur JSON-Format für einfachen Datenbank-Import
+        body = json.dumps(rsvp_data, indent=2, ensure_ascii=False)
 
         msg.attach(MIMEText(body, 'plain'))
+        print("E-Mail-Inhalt erstellt")
 
         # E-Mail senden
+        print("Versuche Verbindung zum SMTP-Server herzustellen...")
         with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
+            print("Verbindung hergestellt, starte TLS...")
             server.starttls()
+            print("TLS gestartet, versuche Login...")
             server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+            print("Login erfolgreich, sende E-Mail...")
             server.send_message(msg)
+            print(f"E-Mail erfolgreich gesendet an {app.config['MAIL_USERNAME']}")
 
         return True
+    except smtplib.SMTPAuthenticationError as e:
+        print(f"SMTP Authentifizierungsfehler: {str(e)}")
+        return False
+    except smtplib.SMTPException as e:
+        print(f"SMTP Fehler: {str(e)}")
+        return False
     except Exception as e:
-        print(f"Fehler beim Senden der E-Mail: {str(e)}")
+        print(f"Unerwarteter Fehler beim Senden der E-Mail: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
         return False
 
 if __name__ == '__main__':
