@@ -35,9 +35,8 @@
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="adults" class="form-label">Anzahl der erwachsenen Begleitpersonen</label>
+                                <label for="adults" class="form-label">Anzahl der Erwachsenen</label>
                                 <select class="form-select" id="adults" name="adults" required>
-                                    <option value="0">Keine</option>
                                     <option value="1">1 Person</option>
                                     <option value="2">2 Personen</option>
                                 </select>
@@ -48,8 +47,6 @@
                                     <option value="0">Keine</option>
                                     <option value="1">1 Kind</option>
                                     <option value="2">2 Kinder</option>
-                                    <option value="3">3 Kinder</option>
-                                    <option value="4">4 Kinder</option>
                                 </select>
                             </div>
                             
@@ -70,8 +67,30 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="sunday" name="events" value="sunday">
                                     <label class="form-check-label" for="sunday">
-                                        Sonntag: Brunch & Poolparty
+                                        Sonntag: Brunch & Poolparty (nur für Familienmitglieder)
                                     </label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label d-block">Essensvorlieben:</label>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="vegetarian" class="form-label">Vegetarisch</label>
+                                        <input type="number" class="form-control" id="vegetarian" name="vegetarian" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="regular" class="form-label">Wir essen alles</label>
+                                        <input type="number" class="form-control" id="regular" name="regular" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="other" class="form-label">Sonstiges</label>
+                                        <input type="number" class="form-control" id="other" name="other" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="other_details" class="form-label">Details zu Sonstiges</label>
+                                        <input type="text" class="form-control" id="other_details" name="other_details" placeholder="z.B. Allergien, Unverträglichkeiten">
+                                    </div>
                                 </div>
                             </div>
 

@@ -88,42 +88,46 @@ def get_countdown():
 @login_required
 def rsvp():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        adults = request.form.get('adults', type=int)
-        children = request.form.get('children', type=int)
-        friday = 'friday' in request.form.getlist('events')
-        saturday = 'saturday' in request.form.getlist('events')
-        sunday = 'sunday' in request.form.getlist('events')
-        not_attending = request.form.get('not_attending') == 'true'
-        message = request.form.get('message')
+        try:
+            name = request.form.get('name')
+            email = request.form.get('email')
+            adults = request.form.get('adults')
+            children = request.form.get('children')
+            events = request.form.getlist('events')
+            not_attending = request.form.get('not_attending') == 'true'
+            message = request.form.get('message', '')
+            
+            # Neue Felder für Essensvorlieben
+            vegetarian = request.form.get('vegetarian', '0')
+            regular = request.form.get('regular', '0')
+            other = request.form.get('other', '0')
+            other_details = request.form.get('other_details', '')
 
-        if not name or not email:
-            flash('Bitte füllen Sie alle Pflichtfelder aus.', 'error')
-            return redirect(url_for('rsvp'))
+            # Erstelle JSON-Objekt für die E-Mail
+            rsvp_data = {
+                "name": name,
+                "email": email,
+                "adults": adults,
+                "children": children,
+                "events": events,
+                "not_attending": not_attending,
+                "message": message,
+                "food_preferences": {
+                    "vegetarian": vegetarian,
+                    "regular": regular,
+                    "other": other,
+                    "other_details": other_details
+                }
+            }
 
-        # RSVP-Daten für E-Mail
-        rsvp_data = {
-            'name': name,
-            'email': email,
-            'adults': adults,
-            'children': children,
-            'friday': friday,
-            'saturday': saturday,
-            'sunday': sunday,
-            'not_attending': not_attending,
-            'message': message,
-            'created_at': datetime.now(timezone.utc).isoformat()
-        }
-
-        # Sende E-Mail
-        if send_rsvp_data(rsvp_data):
-            flash('Vielen Dank für deine Antwort! Wir freuen uns über eure Teilnahme.', 'success')
+            # Sende E-Mail
+            send_rsvp_email(rsvp_data)
+            
+            flash('Vielen Dank für deine Rückmeldung!', 'success')
             return redirect(url_for('thank_you'))
-        else:
-            flash('Es gab einen Fehler beim Senden der Anmeldung. Bitte versuche es später erneut oder kontaktiere uns direkt.', 'error')
+        except Exception as e:
+            flash(f'Es gab einen Fehler: {str(e)}', 'error')
             return redirect(url_for('rsvp'))
-
     return render_template('rsvp.html')
 
 @app.route('/thank-you')
