@@ -121,7 +121,7 @@ def rsvp():
             }
 
             # Sende E-Mail
-            send_rsvp_email(rsvp_data)
+            send_rsvp_data(rsvp_data)
             
             flash('Vielen Dank für deine Rückmeldung!', 'success')
             return redirect(url_for('thank_you'))
