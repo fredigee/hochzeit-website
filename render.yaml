@@ -1,0 +1,13 @@
+services:
+  - type: cron
+    name: keepalive-cron
+    env: docker
+    plan: starter                  # führt zur Mindestgebühr von $1/Monat
+    docker:
+      image: curlimages/curl:8.10.1
+    schedule: "*/10 * * * *"       # alle 10 Minuten (Zeitzone UTC)
+    envVars:
+      - key: PING_URL
+        value: https://www.jana-und-frederik-heiraten.com/health
+    command: >
+      sh -lc 'curl -fsS --max-time 10 "$PING_URL" > /dev/null' 

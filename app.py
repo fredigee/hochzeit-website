@@ -9,18 +9,14 @@ from email.mime.multipart import MIMEMultipart
 import json
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'dein-geheimer-schluessel'  # Ändern Sie dies in einen sicheren Schlüssel
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 # E-Mail Konfiguration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = "fj.grieb@gmail.com"  # Hier Ihre Gmail-Adresse eintragen
-app.config['MAIL_PASSWORD'] = "tffn kefw esgu euzm"      # Hier Ihr Gmail-App-Passwort eintragen
-
-# Für Produktion sollten die Umgebungsvariablen verwendet werden:
-# app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-# app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS').lower() == 'true'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -143,6 +139,10 @@ def location():
 @app.route('/test')
 def test():
     return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
+
+@app.route('/health')
+def health():
+    return jsonify(status="ok"), 200
 
 def send_rsvp_data(rsvp_data):
     """Sendet die RSVP-Daten per E-Mail."""
