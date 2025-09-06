@@ -51,17 +51,20 @@
     </header>
 
     <section id="story" class="section container mb-3">
-        <h2 class="mb-4 text-center">Unsere Geschichte</h2>
-        <div class="story-content">
-            <p>Unsere Geschichte begann während des Mathematikstudiums in Konstanz – zwischen Vorlesungen, Formeln und Studi-Partys. Richtig ins Gespräch kamen wir auf dem Geburtstag eines gemeinsamen Freundes. Fredi brachte Jana an diesem Abend nach Hause – ein kleines Detail, das schnell zur Tradition wurde.
-                Mit der Zeit wurden aus kurzen Wegen lange Gespräche, aus Freundschaft leise Vertrautheit. Eines Nachts beschlossen Sie (ganz spontan), über den Zaun zum Nachbarn zu klettern und auf seinem Trampolin in den Sternenhimmel zu springen – irgendwo zwischen kindischem Leichtsinn und magischem Moment. Dort, unter den Sternen, fiel der erste Kuss.
-                Fast ein Jahr hat es gedauert, bis wir uns wirklich gefunden haben – aber jede Begegnung, jedes Gespräch war ein Schritt näher zueinander.</p>
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Unsere Geschichte</h2>
+            <div class="story-content">
+                <p>Unsere Geschichte begann während des Mathematikstudiums in Konstanz – zwischen Vorlesungen, Formeln und Studi-Partys. Richtig ins Gespräch kamen wir auf dem Geburtstag eines gemeinsamen Freundes. Fredi brachte Jana an diesem Abend nach Hause – ein kleines Detail, das schnell zur Tradition wurde.
+                    Mit der Zeit wurden aus kurzen Wegen lange Gespräche, aus Freundschaft leise Vertrautheit. Eines Nachts beschlossen Sie (ganz spontan), über den Zaun zum Nachbarn zu klettern und auf seinem Trampolin in den Sternenhimmel zu springen – irgendwo zwischen kindischem Leichtsinn und magischem Moment. Dort, unter den Sternen, fiel der erste Kuss.
+                    Fast ein Jahr hat es gedauert, bis wir uns wirklich gefunden haben – aber jede Begegnung, jedes Gespräch war ein Schritt näher zueinander.</p>
+            </div>
         </div>
     </section>
 
     <section id="location" class="section container mb-3">
-        <h2 class="mb-4 text-center">Die Location</h2>
-        <div class="location-content">
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Die Location</h2>
+            <div class="location-content">
             <div class="tabs mb-3 d-flex flex-wrap justify-content-center">
                 <button class="tab-button btn btn-outline-primary me-2 active gold-tab" onclick="openTab(event, 'location-info')">Informationen</button>
                 <button class="tab-button btn btn-outline-primary me-2 gold-tab" onclick="openTab(event, 'location-map')">Anfahrt</button>
@@ -363,45 +366,166 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <section id="ablauf" class="section container mb-3">
-        <h2 class="mb-4 text-center">Ablauf</h2>
-        <div class="row g-4">
-            <div class="col-12 col-md-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Freitag</h3>
-                        <ul class="list-unstyled">
-                            <li><strong>Anreise</strong> ab 15:00 Uhr</li>
-                            <li>Check-in & Begrüßung</li>
-                            <li>Abends: <strong>Pizza-Party</strong> im Garten</li>
-                        </ul>
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Ablauf</h2>
+            <div class="horizontal-timeline">
+                <!-- Freitag -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">🏠</div>
+                        <div class="timeline-date">Freitag</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-widget">
+                            <div class="widget-header">
+                                <h4>Freitag, 19. Juni 2026</h4>
+                                <span class="widget-subtitle">Anreise & Begrüßung</span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="timeline-event">
+                                    <div class="event-time">17:00</div>
+                                    <div class="event-content">
+                                        <h5>Anreise</h5>
+                                        <p>Check-in in den Unterkünften</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">18:00</div>
+                                    <div class="event-content">
+                                        <h5>Begrüßung</h5>
+                                        <p>Willkommen in der Villa Merlo Nero</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">19:00</div>
+                                    <div class="event-content">
+                                        <h5>Pizza-Party</h5>
+                                        <p>Gemütliches Beisammensein im Garten</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Samstag</h3>
-                        <ul class="list-unstyled">
-                            <li><strong>Trauung & Zeremonie</strong> am Nachmittag</li>
-                            <li>Festliches Abendessen</li>
-                            <li>Abends: <strong>Party</strong> mit Musik & Tanz</li>
-                        </ul>
+
+                <!-- Samstag -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">💒</div>
+                        <div class="timeline-date">Samstag</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-widget">
+                            <div class="widget-header">
+                                <h4>Samstag, 20. Juni 2026</h4>
+                                <span class="widget-subtitle">Der große Tag</span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="timeline-event">
+                                    <div class="event-time">15:30</div>
+                                    <div class="event-content">
+                                        <h5>Ankunft</h5>
+                                        <p>Begrüßung der Gäste in der Villa</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">16:00</div>
+                                    <div class="event-content">
+                                        <h5>Trauung & Zeremonie</h5>
+                                        <p>Hochzeitszeremonie im Garten der Villa</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">16:45</div>
+                                    <div class="event-content">
+                                        <h5>Glückwünsche</h5>
+                                        <p>Gruppenfotos und Glückwünsche</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">17:00</div>
+                                    <div class="event-content">
+                                        <h5>Apero</h5>
+                                        <p>Champagner und kleine Häppchen</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">19:00</div>
+                                    <div class="event-content">
+                                        <h5>Essen</h5>
+                                        <p>Italienische Köstlichkeiten unter den Sternen</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">21:00</div>
+                                    <div class="event-content">
+                                        <h5>Party</h5>
+                                        <p>Musik, Tanz und Feier bis in die Nacht</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">01:00</div>
+                                    <div class="event-content">
+                                        <h5>Ende</h5>
+                                        <p>Ende der Feierlichkeiten</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Sonntag</h3>
-                        <ul class="list-unstyled">
-                            <li><strong>Brunch</strong> ab 10:00 Uhr</li>
-                            <li>Gemütliches Beisammensein</li>
-                            <li>Poolparty & Ausklang</li>
-                        </ul>
+
+                <!-- Sonntag -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">🏊</div>
+                        <div class="timeline-date">Sonntag</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-widget">
+                            <div class="widget-header">
+                                <h4>Sonntag, 21. Juni 2026</h4>
+                                <span class="widget-subtitle">Ausklang & Abschied</span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="timeline-event">
+                                    <div class="event-time">10:00</div>
+                                    <div class="event-content">
+                                        <h5>Brunch</h5>
+                                        <p>Entspannter Start in den Tag</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">12:00</div>
+                                    <div class="event-content">
+                                        <h5>Gemütliches Beisammensein</h5>
+                                        <p>Erinnerungen austauschen und entspannen</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">15:00</div>
+                                    <div class="event-content">
+                                        <h5>Poolparty</h5>
+                                        <p>Letzte gemeinsame Stunden am Pool</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-event">
+                                    <div class="event-time">17:00</div>
+                                    <div class="event-content">
+                                        <h5>Abschied</h5>
+                                        <p>Auf Wiedersehen und vielen Dank!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -409,10 +533,12 @@
     </section>
 
     <section id="rsvp" class="section container mb-3">
-        <h2 class="mb-4 text-center">Sei Dabei</h2>
-        <p class="text-center">Wir freuen uns über eure Teilnahme an unserem besonderen Tag.</p>
-        <div class="text-center">
-            <a href="{{ url_for('rsvp') }}" class="btn btn-primary btn-lg gold-btn">Jetzt antworten</a>
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Sei Dabei</h2>
+            <p class="text-center">Wir freuen uns über eure Teilnahme an unserem besonderen Tag.</p>
+            <div class="text-center">
+                <a href="{{ url_for('rsvp') }}" class="btn btn-primary btn-lg gold-btn">Jetzt antworten</a>
+            </div>
         </div>
     </section>
 
@@ -455,8 +581,12 @@
             /* Hintergrundfarbe entfernt, Bild wird über style.css gesetzt */
         }
         h1, h2, h3 {
-            font-family: 'Great Vibes', cursive !important;
-            color: #bfa14a !important;
+            font-family: 'Playfair Display', serif !important;
+            color: #000000 !important;
+        }
+        /* Hero page headings should be white */
+        .hero h1, .hero h2, .hero h3 {
+            color: white !important;
         }
         .countdown-item {
             min-width: 70px;
@@ -468,23 +598,23 @@
             min-width: 120px;
         }
         .gold-tab {
-            border-color: #bfa14a !important;
-            color: #bfa14a !important;
+            border-color: #000000 !important;
+            color: #000000 !important;
             background-color: white !important;
         }
         .gold-tab.active, .gold-tab:active, .gold-tab:focus, .gold-tab:hover {
-            background-color: #bfa14a !important;
+            background-color: #000000 !important;
             color: white !important;
-            border-color: #bfa14a !important;
+            border-color: #000000 !important;
         }
         .gold-btn {
-            background-color: #bfa14a !important;
-            border-color: #bfa14a !important;
+            background-color: #000000 !important;
+            border-color: #000000 !important;
             color: white !important;
         }
         .gold-btn:hover, .gold-btn:focus {
-            background-color: #a88d36 !important;
-            border-color: #a88d36 !important;
+            background-color: #333333 !important;
+            border-color: #333333 !important;
             color: white !important;
         }
     </style>
