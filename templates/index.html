@@ -17,7 +17,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#story">Unsere Geschichte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#story">Willkommen</a></li>
                         <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ablauf">Ablauf</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('rsvp') }}">Sei Dabei</a></li>
@@ -52,11 +52,31 @@
 
     <section id="story" class="section container mb-3">
         <div class="section-content">
-            <h2 class="mb-4 text-center">Unsere Geschichte</h2>
-            <div class="story-content">
-                <p>Unsere Geschichte begann während des Mathematikstudiums in Konstanz – zwischen Vorlesungen, Formeln und Studi-Partys. Richtig ins Gespräch kamen wir auf dem Geburtstag eines gemeinsamen Freundes. Fredi brachte Jana an diesem Abend nach Hause – ein kleines Detail, das schnell zur Tradition wurde.
-                    Mit der Zeit wurden aus kurzen Wegen lange Gespräche, aus Freundschaft leise Vertrautheit. Eines Nachts beschlossen Sie (ganz spontan), über den Zaun zum Nachbarn zu klettern und auf seinem Trampolin in den Sternenhimmel zu springen – irgendwo zwischen kindischem Leichtsinn und magischem Moment. Dort, unter den Sternen, fiel der erste Kuss.
-                    Fast ein Jahr hat es gedauert, bis wir uns wirklich gefunden haben – aber jede Begegnung, jedes Gespräch war ein Schritt näher zueinander.</p>
+            <h2 class="mb-4 text-center">Willkommen</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="story-content">
+                        <p>Willkommen auf unserer Hochzeitsseite!<br><br>
+                        Viele von euch haben lange darauf gewartet, und wir mindestens genauso sehr.<br>
+                        Nach über 10 Jahren freuen wir uns riesig, diesen besonderen Moment in unserem Leben mit euch teilen zu dürfen.<br><br>
+                        Uns ist es wichtig, dass unsere Hochzeit nicht nur ein Fest der Liebe ist, sondern auch ein Wochenende, an dem unsere Familien und Freunde einander begegnen, kennenlernen und gemeinsam eine wunderbare Zeit verbringen.<br><br>
+                        Auf dieser Seite findet ihr alle wichtigen Informationen rund um unseren großen Tag – vom Ablauf bis zu Anreise- und Unterkunftsmöglichkeiten.<br><br>
+                        Wir können es kaum erwarten, gemeinsam mit euch in Florenz zu feiern – voller Freude, Lachen und unvergesslicher Momente!</p>
+                        
+                        <div class="important-note mt-4 p-3" style="background-color: #f8f9fa; border-left: 4px solid #000000; border-radius: 4px;">
+                            <p class="mb-0"><strong>Wichtiger Hinweis:</strong> Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Monate vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="couple-slideshow">
+                        <div class="slideshow-container">
+                            <div class="single-image">
+                                <img src="/static/Paarbilder/WhatsApp Image 2025-10-07 at 22.08.57.jpeg" alt="Jana & Frederik" class="slide-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -71,7 +91,7 @@
                 <button class="tab-button btn btn-outline-primary gold-tab" onclick="openTab(event, 'location-hotels')">Unterkünfte</button>
             </div>
             <div id="location-info" class="tab-content active bg-white p-3 rounded shadow-sm">
-                <p>Wir laden euch in die wunderschöne Villa Merlo Nero ein, mitten im Herzen der Toskana. Umgeben von Olivenhainen und mit einem atemberaubenden Blick auf die toskanischen Hügel, werden wir in dieser historischen Villa aus dem 14. Jahrhundert unseren besonderen Tag feiern. Die Location liegt nur 30 Autominuten vom Flughafen Florenz entfernt und ist damit ideal für alle Gäste erreichbar. Die Zeremonie sowie das Essen werden draußen stattfinden, mit Blick auf den prächtigen Garten der Villa.</p>
+                <p>Wir laden euch in die wunderschöne Villa Merlo Nero ein, mitten im Herzen der Toskana. Eine historische Villa mit mediterranem Charme, umgeben von weitläufigen Gärten mit Labyrinth, jahrhundertealten Olivenbäumen und einem einladenden Pool – der perfekte Ort für unvergessliche Erinnerungen. Die Location liegt nur 30 Autominuten vom Flughafen Florenz entfernt und ist damit ideal für alle Gäste erreichbar. Die Zeremonie sowie das Essen werden draußen stattfinden, mit Blick auf den prächtigen Garten der Villa.</p>
             </div>
             <div id="location-map" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
                 <iframe 
@@ -618,5 +638,6 @@
             color: white !important;
         }
     </style>
+
 </body>
 </html> 
