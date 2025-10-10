@@ -46,7 +46,7 @@ def get_time_until_wedding():
 # Einfaches User-Modell mit nur einem Passwort
 class User(UserMixin):
     id = 1  # Fester Wert, da wir nur einen Benutzer haben
-    password_hash = generate_password_hash('20260620')  # Fester Passwort-Hash
+    password_hash = generate_password_hash('2026')  # Fester Passwort-Hash
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
