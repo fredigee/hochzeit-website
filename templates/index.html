@@ -20,7 +20,8 @@
                         <li class="nav-item"><a class="nav-link" href="#story">Willkommen</a></li>
                         <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ablauf">Ablauf</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('rsvp') }}">Sei Dabei</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#dresscode">Dresscode</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('rsvp') }}">Seid ihr dabei?</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,27 +55,23 @@
         <div class="section-content">
             <h2 class="mb-4 text-center">Willkommen</h2>
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="story-content">
-                        <p>Willkommen auf unserer Hochzeitsseite!<br><br>
-                        Viele von euch haben lange darauf gewartet, und wir mindestens genauso sehr.<br>
-                        Nach über 10 Jahren freuen wir uns riesig, diesen besonderen Moment in unserem Leben mit euch teilen zu dürfen.<br><br>
-                        Uns ist es wichtig, dass unsere Hochzeit nicht nur ein Fest der Liebe ist, sondern auch ein Wochenende, an dem unsere Familien und Freunde einander begegnen, kennenlernen und gemeinsam eine wunderbare Zeit verbringen.<br><br>
-                        Auf dieser Seite findet ihr alle wichtigen Informationen rund um unseren großen Tag – vom Ablauf bis zu Anreise- und Unterkunftsmöglichkeiten.<br><br>
-                        Wir können es kaum erwarten, gemeinsam mit euch in Florenz zu feiern – voller Freude, Lachen und unvergesslicher Momente!</p>
-                        
-                        <div class="important-note mt-4 p-3" style="background-color: #f8f9fa; border-left: 4px solid #000000; border-radius: 4px;">
-                            <p class="mb-0"><strong>Wichtiger Hinweis:</strong> Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Monate vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-12">
                     <div class="couple-slideshow">
                         <div class="slideshow-container">
                             <div class="single-image">
-                                <img src="/static/Paarbilder/WhatsApp Image 2025-10-07 at 22.08.57.jpeg" alt="Jana & Frederik" class="slide-image">
+                                <img src="/static/Paarbilder/WhatsApp Image 2025-10-09 at 12.57.52.jpeg" alt="Jana & Frederik" class="slide-image">
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="story-content">
+                        <p>Willkommen auf unserer Hochzeitsseite!<br><br>
+                        Es hat eine Weile gedauert – doch nun ist es soweit: Nach über zehn gemeinsamen Jahren freuen wir uns riesig, diesen besonderen Tag mit euch zu erleben.<br><br>
+                        Uns ist es wichtig, dass unsere Hochzeit nicht nur ein Fest der Liebe ist, sondern auch ein Wochenende, an dem unsere Familien und Freunde einander begegnen, kennenlernen und gemeinsam eine wunderbare Zeit verbringen.<br><br>
+                        Auf dieser Seite findet ihr alle wichtigen Informationen rund um unseren großen Tag – vom Ablauf bis zu Anreise- und Unterkunftsmöglichkeiten.<br><br>
+                        Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Monate vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.<br><br>
+                        Wir können es kaum erwarten, gemeinsam mit euch in Florenz zu feiern – voller Freude, Lachen und unvergesslicher Momente!</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +88,8 @@
                 <button class="tab-button btn btn-outline-primary gold-tab" onclick="openTab(event, 'location-hotels')">Unterkünfte</button>
             </div>
             <div id="location-info" class="tab-content active bg-white p-3 rounded shadow-sm">
-                <p>Wir laden euch in die wunderschöne Villa Merlo Nero ein, mitten im Herzen der Toskana. Eine historische Villa mit mediterranem Charme, umgeben von weitläufigen Gärten mit Labyrinth, jahrhundertealten Olivenbäumen und einem einladenden Pool – der perfekte Ort für unvergessliche Erinnerungen. Die Location liegt nur 30 Autominuten vom Flughafen Florenz entfernt und ist damit ideal für alle Gäste erreichbar. Die Zeremonie sowie das Essen werden draußen stattfinden, mit Blick auf den prächtigen Garten der Villa.</p>
+                <p>Wir laden euch herzlich in die wunderschöne Villa Merlo Nero ein – ein historisches Juwel im Herzen der Toskana. Umgeben von weitläufigen Gärten mit Labyrinth, jahrhundertealten Olivenbäumen und einem einladenden Pool, vereint die Villa mediterranen Charme mit einer einzigartigen Atmosphäre. Der perfekte Ort, um gemeinsam unvergessliche Erinnerungen zu schaffen.<br><br>
+                Nur 30 Autominuten vom Flughafen Florenz entfernt, ist die Location bequem erreichbar. Zeremonie und Dinner finden unter freiem Himmel statt – mit Blick auf die malerische Landschaft rund um die Villa.</p>
             </div>
             <div id="location-map" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
                 <iframe 
@@ -106,7 +104,8 @@
             </div>
             <div id="location-hotels" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
                 <div class="table-responsive">
-                    <p class="mb-4">Für eine schnelle Anfahrt haben wir euch eine Liste von Unterkünften in der Nähe zusammengestellt. Alle Hotels und B&Bs sind vom Veranstalter empfohlen und bieten euch eine ideale Ausgangslage für unsere Feierlichkeiten. Wir empfehlen euch, die Unterkunft frühzeitig zu buchen.</p>
+                    <p class="mb-4">In der Villa selbst gibt es Schlafmöglichkeiten, diese sind allerdings begrenzt und für direkte Familienmitglieder vorgesehen.<br><br>
+                    Für unsere weiteren Gäste haben wir eine Liste von Unterkünften in der Nähe zusammengestellt. Alle Hotels und B&Bs sind vom Veranstalter empfohlen und bieten euch eine ideale Ausgangslage für unsere Feierlichkeiten. Es lohnt sich bestimmt auch, bei Airbnb oder ähnlichen Plattformen zu schauen – je nach Lust und Laune! Wir empfehlen euch, die Unterkunft frühzeitig zu buchen.</p>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -552,10 +551,31 @@
         </div>
     </section>
 
+    <!-- Dresscode Section -->
+    <section id="dresscode" class="section container mb-3">
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Dresscode</h2>
+            <p class="text-center mb-4">Wir freuen uns auf einen eleganten und festlichen Abend mit euch!<br>Wir empfehlen den folgenden Dresscode:</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                    <div class="mb-4">
+                        <p class="text-center"><strong>👔 Für Herren</strong></p>
+                        <p class="text-center">Anzug / Chino, Hemd</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-center"><strong>👗 Für Frauen</strong></p>
+                        <p class="text-center">Elegantes Sommerkleid</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="rsvp" class="section container mb-3">
         <div class="section-content">
-            <h2 class="mb-4 text-center">Sei Dabei</h2>
-            <p class="text-center">Wir freuen uns über eure Teilnahme an unserem besonderen Tag.</p>
+            <h2 class="mb-4 text-center">Seid ihr dabei?</h2>
+            <p class="text-center">Wir würden uns sehr freuen, wenn ihr an unserem besonderen Tag dabei seid!<br>
+            Bitte gebt uns bis Ende des Jahres über das untenstehende Formular Bescheid, ob ihr kommen könnt.</p>
             <div class="text-center">
                 <a href="{{ url_for('rsvp') }}" class="btn btn-primary btn-lg gold-btn">Jetzt antworten</a>
             </div>
@@ -563,7 +583,7 @@
     </section>
 
     <footer class="bg-white text-center py-3 mt-3 shadow-sm">
-        <p class="mb-0">&copy; 2025 Jana & Frederik</p>
+        <p class="mb-0">&copy; 2025 Cursor & Frederik</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -597,9 +617,6 @@
         }
     </script>
     <style>
-        .hero {
-            /* Hintergrundfarbe entfernt, Bild wird über style.css gesetzt */
-        }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif !important;
             color: #000000 !important;
