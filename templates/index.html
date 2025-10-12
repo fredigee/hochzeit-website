@@ -22,6 +22,7 @@
                         <li class="nav-item"><a class="nav-link" href="#ablauf">Ablauf</a></li>
                         <li class="nav-item"><a class="nav-link" href="#dresscode">Dresscode</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('rsvp') }}">Seid ihr dabei?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -472,7 +473,7 @@
                                 <div class="timeline-event">
                                     <div class="event-time">18:30</div>
                                     <div class="event-content">
-                                        <h5>Essen</h5>
+                                        <h5>Abenessen</h5>
                                     </div>
                                 </div>
                                 <div class="timeline-event">
@@ -578,6 +579,82 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="section container mb-3">
+        <div class="section-content">
+            <h2 class="mb-4 text-center">Fragen & Antworten</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                    <div class="accordion" id="faqAccordion">
+                        
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item mb-1">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                    An wen kann ich mich wenden, wenn ich ein Programm geplant habe?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body py-1">
+                                    <p class="mb-2">Wendet euch gerne an unsere Trauzeugen:</p>
+                                    <ul class="mb-2">
+                                        <li><strong>Michelle Ponty:</strong> <a href="tel:+4915122957406">+49 151 22957406</a></li>
+                                        <li><strong>Marie Grieb:</strong> <a href="tel:+491725754547">+49 172 5754547</a></li>
+                                    </ul>
+                                    <p class="mb-0"><strong>Wichtig:</strong> Geplante Programmpunkte bitte nur in Absprache mit den Trauzeugen.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item mb-1">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Gibt es Parkplätze vor Ort?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body py-1">
+                                    <p class="mb-0">Es gibt leider nur begrenzte Parkplätze vor Ort. Die Villa ist jedoch sehr gut mit öffentlichen Verkehrsmitteln oder per Taxi erreichbar. Wir empfehlen euch, die Anreise mit dem Zug oder Bus zu planen.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item mb-1">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Kann ich mein Kind mitbringen?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body py-1">
+                                    <p class="mb-0">Natürlich! Kinder sind bei unserer Hochzeit herzlich willkommen. Bitte gebt uns im RSVP-Formular Bescheid, wenn ihr einen Hochstuhl benötigt, damit wir alles entsprechend vorbereiten können.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item mb-1">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Was passiert bei schlechtem Wetter?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body py-1">
+                                    <p class="mb-0">Falls das Wetter nicht mitspielt, haben wir eine wunderschöne Alternative drinnen in der Villa. Das Essen und die Feier können problemlos nach innen verlegt werden, ohne dass die Stimmung darunter leidet.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-white text-center py-3 mt-3 shadow-sm">
         <p class="mb-0">&copy; 2025 Cursor & Frederik</p>
     </footer>
@@ -649,6 +726,62 @@
             background-color: #333333 !important;
             border-color: #333333 !important;
             color: white !important;
+        }
+        
+        /* FAQ Accordion Spacing */
+        .accordion-body {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        .accordion-item {
+            margin-bottom: 0.25rem !important;
+        }
+        
+        .accordion-button {
+            padding: 0.5rem 1rem !important;
+        }
+        
+        /* Reduce spacing after main headings */
+        .section h2 {
+            margin-bottom: 1rem !important;
+        }
+        
+        /* Specific spacing for dresscode section */
+        #dresscode h2 {
+            margin-bottom: 0.5rem !important;
+        }
+        
+        /* Mobile-friendly adjustments */
+        @media (max-width: 768px) {
+            /* Willkommen section mobile layout */
+            #story .row {
+                flex-direction: column-reverse;
+            }
+            
+            #story .col-lg-3 {
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            #story .col-lg-9 {
+                margin-top: 0;
+            }
+            
+            /* Reduce spacing after main headings on mobile */
+            .section h2 {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            /* Adjust image size on mobile */
+            .slide-image {
+                max-width: 120px !important;
+            }
+            
+            /* Reduce padding in dresscode block */
+            .dresscode-block {
+                padding: 1rem !important;
+            }
         }
     </style>
 
