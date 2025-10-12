@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-lg-9 col-md-12">
                     <div class="story-content">
-                        <p>Es hat eine Weile gedauert doch nun ist es soweit: Nach über zehn gemeinsamen Jahren freuen wir uns riesig, diesen besonderen Tag mit euch zu erleben.<br><br>
+                        <p>Es hat eine Weile gedauert doch nun ist es soweit: Nach über zehn Jahren freuen wir uns riesig, diesen besonderen Tag mit euch zu feiern.<br><br>
                         Uns ist es wichtig, dass unsere Hochzeit nicht nur ein Fest der Liebe ist, sondern auch ein Wochenende, an dem unsere Familien und Freunde einander begegnen, kennenlernen und gemeinsam eine wunderbare Zeit verbringen.<br><br>
                         Auf dieser Seite findet ihr alle wichtigen Informationen rund um unseren großen Tag – vom Ablauf bis zu Anreise- und Unterkunftsmöglichkeiten.
                         Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Monate vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.<br><br>
@@ -571,8 +571,8 @@
     <section id="rsvp" class="section container mb-3">
         <div class="section-content">
             <h2 class="mb-4 text-center">Seid ihr dabei?</h2>
-            <p class="text-center">Wir würden uns sehr freuen, wenn ihr an unserem besonderen Tag dabei seid!<br>
-            Bitte gebt uns bis Ende des Jahres über das untenstehende Formular Bescheid, ob ihr kommen könnt.</p>
+            <p class="text-center">Wir würden uns sehr freuen, wenn ihr an diesem besonderen Tag mit uns verbringt!<br>
+            Bitte gebt uns bis Ende des Jahres über das Formular Bescheid, ob ihr kommen könnt.</p>
             <div class="text-center">
                 <a href="{{ url_for('rsvp') }}" class="btn btn-primary btn-lg gold-btn">Jetzt antworten</a>
             </div>
@@ -732,6 +732,8 @@
         .accordion-body {
             padding-top: 0.5rem !important;
             padding-bottom: 0.5rem !important;
+            color: #000000 !important;
+            font-family: 'Montserrat', sans-serif !important;
         }
         
         .accordion-item {
@@ -740,6 +742,8 @@
         
         .accordion-button {
             padding: 0.5rem 1rem !important;
+            color: #000000 !important;
+            font-family: 'Montserrat', sans-serif !important;
         }
         
         /* Reduce spacing after main headings */
@@ -775,12 +779,26 @@
             
             /* Adjust image size on mobile */
             .slide-image {
-                max-width: 120px !important;
+                max-width: 160px !important;
             }
             
             /* Reduce padding in dresscode block */
             .dresscode-block {
                 padding: 1rem !important;
+            }
+            
+            /* Make countdown boxes smaller on mobile */
+            .countdown-item {
+                padding: 0.5rem !important;
+                margin: 0.25rem !important;
+            }
+            
+            .countdown-item span {
+                font-size: 1.5rem !important;
+            }
+            
+            .countdown-label {
+                font-size: 0.75rem !important;
             }
         }
     </style>
