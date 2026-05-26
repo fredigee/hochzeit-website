@@ -25,6 +25,8 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'tffn kefw esgu eu
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+login_manager.login_message = 'Bitte melde dich an, um die Seite zu sehen.'
+login_manager.login_message_category = 'info'
 
 # Hochzeitsdatum
 WEDDING_DATE = datetime(2026, 6, 20)
