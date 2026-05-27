@@ -1,12 +1,12 @@
 :root {
     --primary-color: #1a1a1a;
-    --secondary-color: #b08d57;
+    --secondary-color: #555555;
     --text-color: #1a1a1a;
-    --background-color: #fdf9f4;
-    --accent-color: #b08d57;
-    --gold: #b08d57;
-    --gold-light: #f5ede0;
-    --cream: #fdf9f4;
+    --background-color: #ffffff;
+    --accent-color: #1a1a1a;
+    --gold: #1a1a1a;
+    --gold-light: #f0f0f0;
+    --cream: #ffffff;
 }
 
 
@@ -37,7 +37,7 @@ h1, h2, h3 {
 
 .hero {
     width: 100vw;
-    min-height: 70vh;
+    min-height: 20vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('/static/toskana_entrypage.jpg');
     background-size: cover;
@@ -59,10 +59,10 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(253, 249, 244, 0.96);
+    background-color: rgba(255, 255, 255, 0.97);
     padding: 1rem 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(176, 141, 87, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 nav ul {
@@ -86,12 +86,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--gold);
+    color: #666666;
 }
 
 .hero-content {
-    padding: 2rem;
-    margin-top: 100px;
+    padding: 0.5rem 2rem 56px;
+    margin-top: 56px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -100,13 +100,13 @@ nav ul li a:hover {
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.3rem;
 }
 
 .date, .location {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .section {
@@ -119,10 +119,10 @@ nav ul li a:hover {
 
 .section-content {
     background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(176, 141, 87, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     padding: 2rem 2rem 1.5rem;
-    box-shadow: 0 2px 24px rgba(176, 141, 87, 0.07);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
     margin: 0;
     max-width: 100%;
     width: 100%;
@@ -161,8 +161,8 @@ nav ul li a:hover {
 }
 
 .button:hover, .btn-primary:hover, .btn-outline-primary:hover, .gold-btn:hover {
-    background-color: var(--gold) !important;
-    border-color: var(--gold) !important;
+    background-color: #555555 !important;
+    border-color: #555555 !important;
     color: white !important;
 }
 
@@ -226,13 +226,13 @@ nav ul li a:hover {
 /* Responsive Design - Mobile */
 @media (max-width: 768px) {
     .hero {
-        min-height: 60vh;
+        min-height: 24vh;
         margin-top: 0;
     }
     
     .hero-content {
-        margin-top: 80px;
-        padding: 1rem;
+        margin-top: 60px;
+        padding: 0.5rem 1rem;
     }
     
     .hero-content h1 {
@@ -324,8 +324,8 @@ nav ul li a:hover {
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1rem;
+    margin-top: 0.6rem;
 }
 
 .countdown-item {
@@ -333,22 +333,23 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    min-width: 120px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    min-width: 58px;
 }
 
 .countdown-item span:first-child {
-    font-size: 3rem;
+    font-size: 1.05rem;
     font-weight: bold;
     font-family: 'Playfair Display', serif;
 }
 
 .countdown-label {
-    font-size: 1rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 0.5rem;
+    letter-spacing: 1.5px;
+    margin-top: 0.15rem;
+    line-height: 1;
 }
 
 @media (max-width: 768px) {
@@ -412,7 +413,7 @@ nav ul li a:hover {
     left: 10%;
     right: 10%;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(176, 141, 87, 0.4), transparent);
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
     z-index: 1;
 }
 
@@ -442,8 +443,9 @@ nav ul li a:hover {
     background: white;
     padding: 0.4rem;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(176, 141, 87, 0.15);
-    border: 1px solid rgba(176, 141, 87, 0.35);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    filter: grayscale(100%);
 }
 
 .timeline-date {
@@ -465,7 +467,7 @@ nav ul li a:hover {
     background: var(--gold);
     border-radius: 50%;
     border: 2px solid white;
-    box-shadow: 0 0 0 1px rgba(176, 141, 87, 0.4);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
 }
 
@@ -477,15 +479,15 @@ nav ul li a:hover {
 .timeline-widget {
     background: white;
     border-radius: 4px;
-    box-shadow: 0 2px 16px rgba(176, 141, 87, 0.08);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
     overflow: hidden;
-    border: 1px solid rgba(176, 141, 87, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .widget-header {
-    background: linear-gradient(135deg, var(--gold-light), #faf5ec);
+    background: linear-gradient(135deg, #f5f5f5, #ebebeb);
     padding: 1rem 1.2rem;
-    border-bottom: 1px solid rgba(176, 141, 87, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .widget-header h4 {
@@ -514,7 +516,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     padding: 0.65rem 0;
-    border-bottom: 1px solid rgba(176, 141, 87, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .timeline-event:last-child {
@@ -531,7 +533,7 @@ nav ul li a:hover {
     min-width: 76px;
     text-align: right;
     padding-right: 1rem;
-    border-right: 1px solid rgba(176, 141, 87, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
     flex-shrink: 0;
     font-family: 'Montserrat', sans-serif;
     white-space: nowrap;
@@ -773,7 +775,7 @@ nav ul li a:hover {
     font-size: 0.85rem;
     color: #444;
     padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(176, 141, 87, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     letter-spacing: 0.02em;
 }
 
@@ -783,7 +785,7 @@ nav ul li a:hover {
 
 .dresscode-divider {
     width: 1px;
-    background: rgba(176, 141, 87, 0.3);
+    background: rgba(0, 0, 0, 0.12);
     align-self: stretch;
     flex-shrink: 0;
     margin: 0.5rem 0;
@@ -797,7 +799,7 @@ nav ul li a:hover {
     max-width: 600px;
     margin: 0 auto;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(176, 141, 87, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .dresscode-nogo-label {
@@ -823,7 +825,7 @@ nav ul li a:hover {
     .dresscode-divider {
         width: 48px;
         height: 1px;
-        background: rgba(176, 141, 87, 0.3);
+        background: rgba(0, 0, 0, 0.12);
         align-self: auto;
         margin: 0;
     }
@@ -1043,7 +1045,7 @@ nav ul li a:hover {
 @media (max-width: 991px) {
     .navbar-collapse {
         padding: 0.75rem 0 1rem;
-        border-top: 1px solid rgba(176, 141, 87, 0.12);
+        border-top: 1px solid rgba(0, 0, 0, 0.07);
         margin-top: 0.5rem;
     }
     .navbar-nav .nav-link {
@@ -1053,7 +1055,7 @@ nav ul li a:hover {
         letter-spacing: 0.1em;
     }
     .navbar-toggler {
-        border-color: rgba(176, 141, 87, 0.4);
+        border-color: rgba(0, 0, 0, 0.2);
         padding: 0.3rem 0.6rem;
     }
     .navbar-toggler:focus {
