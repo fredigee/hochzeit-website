@@ -970,7 +970,7 @@ nav ul li a:hover {
     
     /* Mobile Image Optimization */
     .slide-image {
-        max-width: 180px;
+        max-width: 100%;
         height: auto;
     }
     
@@ -1025,7 +1025,7 @@ nav ul li a:hover {
     }
     
     .slide-image {
-        max-width: 150px;
+        max-width: 100%;
     }
     
     .table {

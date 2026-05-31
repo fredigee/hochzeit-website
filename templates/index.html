@@ -33,19 +33,19 @@
             <div class="countdown mt-4">
                 <div class="countdown-item text-center">
                     <span id="days" class="countdown-number">0</span>
-                    <span class="countdown-label">Tage</span>
+                    <span class="countdown-label"><span class="d-none d-sm-inline">Tage</span><span class="d-inline d-sm-none">Tg</span></span>
                 </div>
                 <div class="countdown-item text-center">
                     <span id="hours" class="countdown-number">0</span>
-                    <span class="countdown-label">Stunden</span>
+                    <span class="countdown-label"><span class="d-none d-sm-inline">Stunden</span><span class="d-inline d-sm-none">Std</span></span>
                 </div>
                 <div class="countdown-item text-center">
                     <span id="minutes" class="countdown-number">0</span>
-                    <span class="countdown-label">Minuten</span>
+                    <span class="countdown-label"><span class="d-none d-sm-inline">Minuten</span><span class="d-inline d-sm-none">Min</span></span>
                 </div>
                 <div class="countdown-item text-center">
                     <span id="seconds" class="countdown-number">0</span>
-                    <span class="countdown-label">Sekunden</span>
+                    <span class="countdown-label"><span class="d-none d-sm-inline">Sekunden</span><span class="d-inline d-sm-none">Sek</span></span>
                 </div>
             </div>
         </div>
@@ -636,15 +636,8 @@
         }
 
         @media (max-width: 768px) {
-            #story .row { flex-direction: column-reverse; }
-            #story .col-lg-3 { margin-top: 1rem; margin-bottom: 0.5rem; }
-            #story .col-lg-9 { margin-top: 0; }
             .section h2 { margin-bottom: 1rem !important; }
-            .slide-image { max-width: 160px !important; }
             .dresscode-block { padding: 1rem !important; }
-            .countdown-item { padding: 0.5rem !important; margin: 0.25rem !important; }
-            .countdown-item span { font-size: 1.5rem !important; }
-            .countdown-label { font-size: 0.75rem !important; }
         }
     </style>
 
