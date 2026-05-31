@@ -39,7 +39,7 @@ h1, h2, h3 {
     width: 100vw;
     min-height: 20vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('/static/toskana_entrypage.jpg');
+                url('/static/background_wedding.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
