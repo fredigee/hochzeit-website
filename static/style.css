@@ -232,6 +232,7 @@ nav ul li a:hover {
     .hero-content {
         margin-top: 60px;
         padding: 0.5rem 1rem 2rem;
+        width: 100%;
     }
     
     .hero-content h1 {
@@ -891,7 +892,7 @@ nav ul li a:hover {
     }
 
     .slide-image {
-        max-width: 80%;
+        max-width: 100%;
         margin: 0 auto;
     }
 }
