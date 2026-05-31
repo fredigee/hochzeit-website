@@ -19,7 +19,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#story">Willkommen</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ablauf">Ablauf</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#dresscode">Dresscode</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tag-der-hochzeit">Tag der Hochzeit</a></li>
                         <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
                         <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                     </ul>
@@ -69,7 +69,7 @@
                         <p>Es hat eine Weile gedauert doch nun ist es soweit: Nach über zehn Jahren freuen wir uns riesig, diesen besonderen Tag mit euch zu feiern.<br><br>
                         Uns ist es wichtig, dass unsere Hochzeit nicht nur ein Fest der Liebe ist, sondern auch ein Wochenende, an dem unsere Familien und Freunde einander begegnen, kennenlernen und gemeinsam eine wunderbare Zeit verbringen.<br><br>
                         Auf dieser Seite findet ihr alle wichtigen Informationen rund um unseren großen Tag – vom Ablauf bis zu Anreise- und Unterkunftsmöglichkeiten.
-                        Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Monate vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.<br><br>
+                        Der Ablaufplan kann sich noch ändern. Bitte schaut ein bis zwei Wochen vor der Hochzeit nochmal auf diese Website, um aktuelle Informationen zu erhalten.<br><br>
                         Wir können es kaum erwarten, gemeinsam mit euch in Florenz zu feiern – voller Freude, Lachen und unvergesslicher Momente!</p>
                     </div>
                 </div>
@@ -231,34 +231,80 @@
         </div>
     </section>
 
-    <!-- Dresscode Section -->
-    <section id="dresscode" class="section container mb-3">
+    <!-- Tag der Hochzeit Section -->
+    <section id="tag-der-hochzeit" class="section container mb-3">
         <div class="section-content">
-            <h2 class="text-center">Dresscode für Samstag</h2>
-            <p class="text-center dresscode-intro">Smart Elegant — helle, gedeckte Töne willkommen</p>
+            <h2 class="text-center">Tag der Hochzeit</h2>
 
-            <div class="dresscode-columns">
-                <div class="dresscode-col">
-                    <div class="dresscode-col-label">Herren</div>
-                    <ul class="dresscode-list">
-                        <li>Anzug</li>
-                        <li>Chino &amp; Hemd in hellen, gedeckten Farben</li>
-                    </ul>
+            <div class="tabs mb-3 d-flex flex-wrap justify-content-center">
+                <button class="tab-button btn btn-outline-primary me-2 active gold-tab" onclick="openTab(event, 'tag-dresscode')">Dresscode</button>
+                <button class="tab-button btn btn-outline-primary gold-tab" onclick="openTab(event, 'tag-sitzordnung')">Sitzordnung</button>
+            </div>
+
+            <div id="tag-dresscode" class="tab-content active bg-white p-3 rounded shadow-sm">
+                <p class="text-center dresscode-intro">Sommerlich Elegant — helle, gedeckte Töne willkommen</p>
+                <div class="dresscode-columns">
+                    <div class="dresscode-col">
+                        <div class="dresscode-col-label">Herren</div>
+                        <ul class="dresscode-list">
+                            <li>Anzug oder Chino</li>
+                            <li>Hemd in hellen, gedeckten Farben</li>
+                        </ul>
+                    </div>
+                    <div class="dresscode-divider"></div>
+                    <div class="dresscode-col">
+                        <div class="dresscode-col-label">Damen</div>
+                        <ul class="dresscode-list">
+                            <li>Festliche Kleider</li>
+                            <li>Elegante Jumpsuits</li>
+                            <li>Schicke Zweiteiler</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="dresscode-divider"></div>
-                <div class="dresscode-col">
-                    <div class="dresscode-col-label">Damen</div>
-                    <ul class="dresscode-list">
-                        <li>Festliche Kleider</li>
-                        <li>Elegante Jumpsuits</li>
-                        <li>Schicke Zweiteiler</li>
-                    </ul>
+                <div class="dresscode-nogo">
+                    <span class="dresscode-nogo-label">Bitte vermeiden</span>
+                    <span class="dresscode-nogo-items">T-Shirts &nbsp;·&nbsp; Gemusterte Hemden &nbsp;·&nbsp; Jeans &nbsp;·&nbsp; Weiße Kleider &nbsp;·&nbsp; Starke Muster</span>
                 </div>
             </div>
 
-            <div class="dresscode-nogo">
-                <span class="dresscode-nogo-label">Bitte vermeiden</span>
-                <span class="dresscode-nogo-items">T-Shirts &nbsp;·&nbsp; Gemusterte Hemden &nbsp;·&nbsp; Jeans &nbsp;·&nbsp; Weiße Kleider &nbsp;·&nbsp; Starke Muster</span>
+            <div id="tag-sitzordnung" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
+                <div id="sitzplan-pdf-content" style="font-family: 'Playfair Display', serif; padding: 24px;">
+                    <div class="text-center mb-4">
+                        <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #1a1a1a;">Jana & Frederik</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: #888; margin-top: 4px;">20. JUNI 2026 · FLORENZ</div>
+                        <div style="width: 60px; height: 1px; background: #1a1a1a; margin: 12px auto;"></div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: #1a1a1a; text-transform: uppercase;">Sitzordnung</div>
+                    </div>
+
+                    {% set seats = [
+                        ('Oskar','Chris'),('Andreas','Anja'),('Concordia','Ronnie'),
+                        ('Sophie','Melissa'),('Eleonora','Antje'),('Jan','Lucia'),
+                        ('Isabel','Amaryllis'),('Manu','Symeon'),('Timo','Jennifer'),
+                        ('Kevin','Lilian'),('Felix','Amelie'),('Miriam','Christian'),
+                        ('Christina','Michelle'),('Enya','Jana'),('Toni','Frederik'),
+                        ('Boris','Taro'),('Chrystal','Marie'),('Antonia','Martin'),
+                        ('Aila','Andrea'),('Christine','Detti'),('Susanne','Wolfgang'),
+                        ('Klaus','Bettina'),('Laurence','Larissa'),('Claudia','Maysa'),
+                        ('Peneolope','Latif'),('Phileas','Ayla'),('Philomela','Derya'),
+                        ('Markus','Sezer'),('Leyan','Sami')
+                    ] %}
+
+                    <div class="mx-auto" style="max-width: 580px;">
+                        {% for left, right in seats %}
+                        <div style="display:flex; align-items:center; height:38px;">
+                            <div style="flex:1; text-align:right; padding-right:10px; font-size:0.95rem; white-space:nowrap;">{{ left }}</div>
+                            <div style="width:26px; height:26px; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.6rem; font-weight:600; position:relative; z-index:1;">{{ loop.index }}</div>
+                            <div style="width:80px; flex-shrink:0; background:#f0f0f0; border-left:1.5px solid #888; border-right:1.5px solid #888; height:100%;{% if loop.first %} border-top:1.5px solid #888; border-radius:6px 6px 0 0;{% endif %}{% if loop.last %} border-bottom:1.5px solid #888; border-radius:0 0 6px 6px;{% endif %}"></div>
+                            <div style="width:26px; height:26px; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.6rem; font-weight:600; position:relative; z-index:1;">{{ loop.index }}</div>
+                            <div style="flex:1; text-align:left; padding-left:10px; font-size:0.95rem; white-space:nowrap;">{{ right }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button onclick="downloadSitzordnungPDF()" class="btn gold-btn">Als PDF herunterladen</button>
+                </div>
             </div>
         </div>
     </section>
@@ -285,17 +331,19 @@
                         <div class="anfahrt-icon">🚗</div>
                         <div class="anfahrt-text">
                             <div class="anfahrt-title">Anreise mit dem Auto &amp; Parken in der Villa</div>
-                            <p>Wer plant, direkt in der Villa zu parken, dem <strong>blauen Weg</strong> auf der Karte folgen. Die Einfahrt ist mit dem <strong>P-Symbol</strong> markiert.</p>
-                            <p class="mb-0">→ Einfahrt über die Straße <strong>Via Benedetto Fortini</strong></p>
+                            <p>Wer plant, mit dem Auto anzureisen und in der Villa zu parken, nutzt bitte den Haupteingang an der Adresse Via Benedetto Fortini, 49/51. Die Einfahrt ist mit dem P-Symbol markiert.</p>
+                            <p>→ Bitte von unten über die Straße Via Benedetto Fortini anfahren – wie auf dem blauen Weg in der Karte gezeigt.</p>
+                            <p class="mb-0">Wer nicht in der Villa parkt (oder mit dem Taxi ankommt), nutzt bitte den anderen Eingang – wie im nächsten Punkt erklärt.</p>
                         </div>
                     </div>
                     <div class="anfahrt-card anfahrt-fuss">
                         <div class="anfahrt-icon">🚶</div>
                         <div class="anfahrt-text">
                             <div class="anfahrt-title">Anreise zu Fuß, per Bus oder Taxi</div>
-                            <p>Dem <strong>roten Weg</strong> auf der Karte folgen. Der Eingang ist mit dem <strong>Eingangs-Symbol</strong> markiert.</p>
-                            <p class="mb-0">→ Von der Straße <strong>Via del Larione</strong> kommen</p>
-                            <p class="mt-2 mb-0">Nächste Bushaltestelle: <strong>Larione</strong></p>
+                            <p>Dem roten Weg auf der Karte folgen. Der Eingang ist mit dem Eingangs-Symbol markiert.</p>
+                            <p>→ Eingang an der Adresse Via del Larione, 35</p>
+                            <p>Für Taxi-Gäste: Bitte diesen Eingang nutzen – hier kann gut gehalten werden und es gibt einen direkten Fußgängerweg zur Villa.</p>
+                            <p class="mb-0">Nächste Bushaltestelle: Larione</p>
                         </div>
                     </div>
                 </div>
@@ -858,6 +906,21 @@
             .countdown-label { font-size: 0.75rem !important; }
         }
     </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadSitzordnungPDF() {
+            const element = document.getElementById('sitzplan-pdf-content');
+            const opt = {
+                margin: [10, 15],
+                filename: 'Sitzordnung-Jana-Frederik.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 
 </body>
 </html> 
