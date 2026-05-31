@@ -268,38 +268,59 @@
             </div>
 
             <div id="tag-sitzordnung" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
-                <div id="sitzplan-pdf-content" style="font-family: 'Playfair Display', serif; padding: 24px;">
-                    <div class="text-center mb-4">
-                        <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #1a1a1a;">Jana & Frederik</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: #888; margin-top: 4px;">20. JUNI 2026 · FLORENZ</div>
-                        <div style="width: 60px; height: 1px; background: #1a1a1a; margin: 12px auto;"></div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: #1a1a1a; text-transform: uppercase;">Sitzordnung</div>
-                    </div>
 
-                    {% set seats = [
-                        ('Oskar','Chris'),('Andreas','Anja'),('Concordia','Ronnie'),
-                        ('Sophie','Melissa'),('Eleonora','Antje'),('Jan','Lucia'),
-                        ('Isabel','Amaryllis'),('Manu','Symeon'),('Timo','Jennifer'),
-                        ('Kevin','Lilian'),('Felix','Amelie'),('Miriam','Christian'),
-                        ('Christina','Michelle'),('Enya','Jana'),('Toni','Frederik'),
-                        ('Boris','Taro'),('Chrystal','Marie'),('Antonia','Martin'),
-                        ('Aila','Andrea'),('Christine','Detti'),('Susanne','Wolfgang'),
-                        ('Klaus','Bettina'),('Laurence','Larissa'),('Claudia','Maysa'),
-                        ('Peneolope','Latif'),('Phileas','Ayla'),('Philomela','Derya'),
-                        ('Markus','Sezer'),('Leyan','Sami')
-                    ] %}
+                {% set seats = [
+                    ('Oskar','Chris'),('Andreas','Anja'),('Concordia','Ronnie'),
+                    ('Sophie','Melissa'),('Eleonora','Antje'),('Jan','Lucia'),
+                    ('Isabel','Amaryllis'),('Manu','Symeon'),('Timo','Jennifer'),
+                    ('Kevin','Lilian'),('Felix','Amelie'),('Miriam','Christian'),
+                    ('Christina','Michelle'),('Enya','Jana'),('Toni','Frederik'),
+                    ('Boris','Taro'),('Chrystal','Marie'),('Antonia','Martin'),
+                    ('Aila','Andrea'),('Christine','Detti'),('Susanne','Wolfgang'),
+                    ('Klaus','Bettina'),('Laurence','Larissa'),('Claudia','Maysa'),
+                    ('Peneolope','Latif'),('Phileas','Ayla'),('Philomela','Derya'),
+                    ('Markus','Sezer'),('Leyan','Sami')
+                ] %}
 
-                    <div class="mx-auto" style="max-width: 580px;">
-                        {% for left, right in seats %}
-                        <div style="display:flex; align-items:center; height:38px;">
-                            <div style="flex:1; text-align:right; padding-right:10px; font-size:0.95rem; white-space:nowrap;">{{ left }}</div>
-                            <div style="width:26px; height:26px; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.6rem; font-weight:600; position:relative; z-index:1;">{{ loop.index }}</div>
-                            <div style="width:80px; flex-shrink:0; background:#f0f0f0; border-left:1.5px solid #888; border-right:1.5px solid #888; height:100%;{% if loop.first %} border-top:1.5px solid #888; border-radius:6px 6px 0 0;{% endif %}{% if loop.last %} border-bottom:1.5px solid #888; border-radius:0 0 6px 6px;{% endif %}"></div>
-                            <div style="width:26px; height:26px; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.6rem; font-weight:600; position:relative; z-index:1;">{{ loop.index }}</div>
-                            <div style="flex:1; text-align:left; padding-left:10px; font-size:0.95rem; white-space:nowrap;">{{ right }}</div>
-                        </div>
-                        {% endfor %}
+                <!-- Screen: visual table with scrollable wrapper -->
+                <div class="sitzplan-screen mx-auto" style="max-width:580px; overflow-x:auto;">
+                    {% for left, right in seats %}
+                    <div style="display:flex; align-items:stretch; min-height:36px; min-width:320px;">
+                        <div style="flex:1; text-align:right; padding:6px 8px 6px 0; font-family:'Playfair Display',serif; font-size:0.9rem; display:flex; align-items:center; justify-content:flex-end;">{{ left }}</div>
+                        <div style="width:24px; height:24px; align-self:center; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.58rem; font-weight:600;">{{ loop.index }}</div>
+                        <div style="width:60px; flex-shrink:0; background:#f0f0f0; border-left:1.5px solid #888; border-right:1.5px solid #888;{% if loop.first %} border-top:1.5px solid #888; border-radius:5px 5px 0 0;{% endif %}{% if loop.last %} border-bottom:1.5px solid #888; border-radius:0 0 5px 5px;{% endif %}"></div>
+                        <div style="width:24px; height:24px; align-self:center; flex-shrink:0; border-radius:50%; border:1.5px solid #555; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:0.58rem; font-weight:600;">{{ loop.index }}</div>
+                        <div style="flex:1; text-align:left; padding:6px 0 6px 8px; font-family:'Playfair Display',serif; font-size:0.9rem; display:flex; align-items:center;">{{ right }}</div>
                     </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Hidden: table-based layout captured for PDF -->
+                <div id="sitzplan-pdf-content" style="position:absolute; left:-9999px; top:0; width:700px; background:white; padding:40px; font-family:'Playfair Display',serif;">
+                    <div style="text-align:center; margin-bottom:28px;">
+                        <div style="font-family:'Great Vibes',cursive; font-size:2.4rem; color:#1a1a1a;">Jana & Frederik</div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:0.75rem; letter-spacing:2px; color:#888; margin-top:6px;">20. JUNI 2026 · FLORENZ</div>
+                        <div style="width:50px; height:1px; background:#1a1a1a; margin:10px auto;"></div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:0.8rem; letter-spacing:3px; color:#1a1a1a; text-transform:uppercase;">Sitzordnung</div>
+                    </div>
+                    <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+                        <thead>
+                            <tr style="border-bottom:1.5px solid #1a1a1a;">
+                                <th style="text-align:right; padding:4px 12px 8px 0; font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:2px; font-weight:400; color:#555;">LINKE SEITE</th>
+                                <th style="text-align:center; padding:4px 8px 8px; font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:2px; font-weight:400; color:#555; width:40px;">NR.</th>
+                                <th style="text-align:left; padding:4px 0 8px 12px; font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:2px; font-weight:400; color:#555;">RECHTE SEITE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for left, right in seats %}
+                            <tr style="background:{% if loop.index is odd %}#f9f9f9{% else %}#ffffff{% endif %};">
+                                <td style="text-align:right; padding:7px 12px 7px 0; border-bottom:1px solid #e8e8e8;">{{ left }}</td>
+                                <td style="text-align:center; padding:7px 8px; border-bottom:1px solid #e8e8e8; font-family:'Montserrat',sans-serif; font-size:0.8rem; font-weight:600; color:#555;">{{ loop.index }}</td>
+                                <td style="text-align:left; padding:7px 0 7px 12px; border-bottom:1px solid #e8e8e8;">{{ right }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="text-center mt-4">
@@ -331,7 +352,7 @@
                         <div class="anfahrt-icon">🚗</div>
                         <div class="anfahrt-text">
                             <div class="anfahrt-title">Anreise mit dem Auto &amp; Parken in der Villa</div>
-                            <p>Wer plant, mit dem Auto anzureisen und in der Villa zu parken, nutzt bitte den Haupteingang an der Adresse Via Benedetto Fortini, 49/51. Die Einfahrt ist mit dem P-Symbol markiert.</p>
+                            <p>Haupteingang an der Adresse Via Benedetto Fortini, 49/51. Die Einfahrt ist mit dem P-Symbol markiert.</p>
                             <p>→ Bitte von unten über die Straße Via Benedetto Fortini anfahren – wie auf dem blauen Weg in der Karte gezeigt.</p>
                             <p class="mb-0">Wer nicht in der Villa parkt (oder mit dem Taxi ankommt), nutzt bitte den anderen Eingang – wie im nächsten Punkt erklärt.</p>
                         </div>
@@ -340,8 +361,7 @@
                         <div class="anfahrt-icon">🚶</div>
                         <div class="anfahrt-text">
                             <div class="anfahrt-title">Anreise zu Fuß, per Bus oder Taxi</div>
-                            <p>Dem roten Weg auf der Karte folgen. Der Eingang ist mit dem Eingangs-Symbol markiert.</p>
-                            <p>→ Eingang an der Adresse Via del Larione, 35</p>
+                            <p>Eingang an der Adresse Via del Larione, 35 (roter Weg)</p>
                             <p>Für Taxi-Gäste: Bitte diesen Eingang nutzen – hier kann gut gehalten werden und es gibt einen direkten Fußgängerweg zur Villa.</p>
                             <p class="mb-0">Nächste Bushaltestelle: Larione</p>
                         </div>
@@ -360,287 +380,8 @@
                 </iframe>
             </div>
             <div id="location-hotels" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
-                <div class="table-responsive">
-                    <p class="mb-4">In der Villa selbst gibt es Schlafmöglichkeiten, diese sind allerdings begrenzt und für Eltern & Geschwister vorgesehen.<br><br>
-                    Der Veranstalter hat uns eine Liste von Unterkünften in der Nähe zusammengestellt. Diese bieten euch eine ideale Ausgangslage für unsere Feierlichkeiten. Es lohnt sich bestimmt auch, bei Airbnb oder ähnlichen Plattformen zu schauen. Wir empfehlen euch, die Unterkunft frühzeitig zu buchen.</p>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr class="d-none d-md-table-row">
-                                    <th>Name</th>
-                                    <th>Adresse</th>
-                                    <th>Kontakt</th>
-                                    <th>Entfernung</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Casale dei Cento Acri</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Via del Larione 5</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 205 3899<br>
-                                            E-Mail: info@casaledeicentoacri.it<br>
-                                            <a href="https://www.casaledeicentoacri.it" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>350 m</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel MòSi B&B</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Via Benedetto Fortini 7</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 349 880 36 08<br>
-                                            E-Mail: info@mosifirenze.com<br>
-                                            <a href="https://www.mosi-firenze.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>900 m</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel David</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Viale Michelangelo 1</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 6811695<br>
-                                            E-Mail: info@hoteldavid.com<br>
-                                            <a href="https://www.hoteldavid.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>1,2 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Dreaming Florence B&B</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Via Giampaolo Orsini 115</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 331 8233390<br>
-                                            E-Mail: info@sognandofirenze.it<br>
-                                            <a href="https://www.sognandofirenze.it" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>1,2 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel Ville Sull Arno</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Lungarno Colombo 1/3</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 670971<br>
-                                            E-Mail: info@hotelvillesullarno.com<br>
-                                            <a href="https://www.hotelvillesullarno.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>1,7 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Plaza Hotel Lucchesi</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Lungarno Zecca Vecchia 38</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 26236<br>
-                                            E-Mail: lucchesi@toflorence.it<br>
-                                            <a href="https://www.plazahotellucchesi.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>2,2 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel Silla</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Via de Renai 5</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 2342888<br>
-                                            E-Mail: hotelsilla@hotelsilla.it<br>
-                                            <a href="https://www.hotelsilla.it" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>2,2 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel Balestri</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Piazza Mentana 7</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 214743<br>
-                                            E-Mail: info@hotel-balestri.it<br>
-                                            <a href="https://www.hotel-balestri.it" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>2,6 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Peruzzi Residences</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Piazza Peruzzi 4</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 6144485<br>
-                                            <a href="https://www.peruzziresidences.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>2,7 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Portrait Firenze</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Lungarno Acciaiuoli 4</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 27268999<br>
-                                            E-Mail: portraitfirenze@lungarnocollection.com<br>
-                                            <a href="https://www.lungarnocollection.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>3,1 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Hotel Continentale</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Vicolo dell Oro 6r</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 27262<br>
-                                            E-Mail: continentale@lungarnocollection.com<br>
-                                            <a href="https://www.lungarnocollection.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>3,1 km</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex flex-column d-md-table-row">
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Name:</strong>
-                                        <span>Porcellino Gallery</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Adresse:</strong>
-                                        <span>Piazza del Mercato Nuovo 4</span>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Kontakt:</strong>
-                                        <div>
-                                            Tel: +39 055 288464<br>
-                                            E-Mail: info@porcellinogallery.com<br>
-                                            <a href="https://www.porcellimogallery.com" target="_blank">Website</a>
-                                        </div>
-                                    </td>
-                                    <td class="d-block d-md-table-cell">
-                                        <strong class="d-md-none">Entfernung:</strong>
-                                        <span>3,2 km</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <p class="text-center">In der Villa selbst gibt es Schlafmöglichkeiten, diese sind allerdings begrenzt und für Eltern &amp; Geschwister vorgesehen.</p>
+                <p class="text-center mb-0">Wer kurzfristig noch eine Unterkunft sucht, dem empfehlen wir das <strong>hu Firenze Certosa camping in town</strong> – hier haben bereits viele Gäste gebucht.<br>Adresse: Via S. Cristofano, 2, 50023 Impruneta FI</p>
             </div>
             <div id="location-villa" class="tab-content bg-white p-3 rounded shadow-sm" style="display:none;">
                 <p class="mb-3">Für alle, die in der Villa übernachten, hier die wichtigsten Infos auf einen Blick.</p>
@@ -911,14 +652,19 @@
     <script>
         function downloadSitzordnungPDF() {
             const element = document.getElementById('sitzplan-pdf-content');
+            element.style.position = 'static';
+            element.style.left = 'auto';
             const opt = {
-                margin: [10, 15],
+                margin: [15, 20],
                 filename: 'Sitzordnung-Jana-Frederik.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-            html2pdf().set(opt).from(element).save();
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.position = 'absolute';
+                element.style.left = '-9999px';
+            });
         }
     </script>
 
