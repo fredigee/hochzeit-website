@@ -493,14 +493,14 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
+            var container = evt.currentTarget.closest('.section-content');
+            var tabcontent = container.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].classList.remove("active");
                 tabcontent[i].style.display = "none";
             }
-            tablinks = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tablinks.length; i++) {
+            var tablinks = container.getElementsByClassName("tab-button");
+            for (var i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
             document.getElementById(tabName).classList.add("active");
