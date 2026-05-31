@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <button onclick="downloadSitzordnungPDF()" class="btn gold-btn">Als PDF herunterladen</button>
+                    <a href="/sitzordnung-print" target="_blank" class="btn gold-btn">Als PDF speichern</a>
                 </div>
             </div>
         </div>
@@ -648,25 +648,6 @@
         }
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script>
-        function downloadSitzordnungPDF() {
-            const element = document.getElementById('sitzplan-pdf-content');
-            element.style.position = 'static';
-            element.style.left = 'auto';
-            const opt = {
-                margin: [15, 20],
-                filename: 'Sitzordnung-Jana-Frederik.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.style.position = 'absolute';
-                element.style.left = '-9999px';
-            });
-        }
-    </script>
 
 </body>
 </html> 

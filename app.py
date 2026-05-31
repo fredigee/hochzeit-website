@@ -142,6 +142,11 @@ def thank_you():
 def location():
     return render_template('location.html')
 
+@app.route('/sitzordnung-print')
+@login_required
+def sitzordnung_print():
+    return render_template('sitzordnung_print.html')
+
 @app.route('/test')
 def test():
     return f'App läuft! Aktuelle UTC-Zeit: {datetime.now(timezone.utc)}'
