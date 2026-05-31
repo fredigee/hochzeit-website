@@ -338,7 +338,7 @@ nav ul li a:hover {
     min-width: 58px;
 }
 
-.countdown-item span:first-child {
+.countdown-number {
     font-size: 1.05rem;
     font-weight: bold;
     font-family: 'Playfair Display', serif;
@@ -362,17 +362,17 @@ nav ul li a:hover {
     }
     
     .countdown {
-        flex-wrap: wrap;
-        gap: 1rem;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
     }
-    
+
     .countdown-item {
-        min-width: 100px;
-        padding: 0.8rem 1.5rem;
+        min-width: 60px;
+        padding: 0.4rem 0.5rem;
     }
-    
-    .countdown-item span:first-child {
-        font-size: 2rem;
+
+    .countdown-number {
+        font-size: 1.3rem;
     }
     
     .section-content {
@@ -869,7 +869,7 @@ nav ul li a:hover {
 
 .slide-image {
     width: 100%;
-    max-width: 200px;
+    max-width: 320px;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
