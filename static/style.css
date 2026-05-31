@@ -36,7 +36,7 @@ h1, h2, h3 {
 }
 
 .hero {
-    width: 100vw;
+    width: 100%;
     min-height: 20vh;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
                 url('/static/background_wedding.jpeg');
@@ -872,10 +872,10 @@ nav ul li a:hover {
 }
 
 .slide-image {
+    display: block;
     width: 100%;
     max-width: 320px;
     height: auto;
-    object-fit: contain;
     border-radius: 8px;
 }
 
@@ -891,7 +891,8 @@ nav ul li a:hover {
     }
 
     .slide-image {
-        max-width: 100%;
+        max-width: 80%;
+        margin: 0 auto;
     }
 }
 
