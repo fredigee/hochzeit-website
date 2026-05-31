@@ -275,21 +275,21 @@ nav ul li a:hover {
     }
     
     .countdown {
-        gap: 1rem;
-        flex-wrap: wrap;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
     }
-    
+
     .countdown-item {
-        min-width: 80px;
-        padding: 0.6rem 1rem;
+        min-width: 58px;
+        padding: 0.3rem 0.4rem;
     }
-    
-    .countdown-item span:first-child {
-        font-size: 1.8rem;
+
+    .countdown-number {
+        font-size: 1.1rem;
     }
-    
+
     .countdown-label {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
 }
 
@@ -308,16 +308,16 @@ nav ul li a:hover {
     }
     
     .countdown-item {
-        min-width: 70px;
-        padding: 0.5rem 0.8rem;
+        min-width: 52px;
+        padding: 0.25rem 0.3rem;
     }
-    
-    .countdown-item span:first-child {
-        font-size: 1.5rem;
+
+    .countdown-number {
+        font-size: 1rem;
     }
-    
+
     .countdown-label {
-        font-size: 0.7rem;
+        font-size: 0.55rem;
     }
 }
 
@@ -988,8 +988,8 @@ nav ul li a:hover {
         padding: 0.6rem 1rem;
     }
     
-    .countdown-item span:first-child {
-        font-size: 1.5rem;
+    .countdown-number {
+        font-size: 1.1rem;
     }
     
     .section h2 {
@@ -1078,8 +1078,8 @@ nav ul li a:hover {
         min-width: 52px;
         padding: 0.4rem 0.3rem;
     }
-    .countdown-item span:first-child {
-        font-size: 1.2rem;
+    .countdown-number {
+        font-size: 1rem;
     }
     .countdown-label {
         font-size: 0.55rem;
