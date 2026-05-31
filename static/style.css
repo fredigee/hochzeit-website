@@ -226,13 +226,14 @@ nav ul li a:hover {
 /* Responsive Design - Mobile */
 @media (max-width: 768px) {
     .hero {
-        min-height: 24vh;
+        min-height: auto;
         margin-top: 0;
+        padding: 80px 1rem 2rem;
     }
-    
+
     .hero-content {
-        margin-top: 60px;
-        padding: 0.5rem 1rem;
+        margin-top: 0;
+        padding: 0;
     }
     
     .hero-content h1 {
