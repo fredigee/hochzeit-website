@@ -496,17 +496,17 @@ nav ul li a:hover {
 }
 
 .timeline-widget {
-    background: #1a1a1a;
+    background: white;
     border-radius: 4px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .widget-header {
-    background: #000;
+    background: #1a1a1a;
     padding: 1rem 1.2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     text-align: center;
 }
 
@@ -536,7 +536,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     padding: 0.65rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .timeline-event:last-child {
@@ -545,7 +545,7 @@ nav ul li a:hover {
 }
 
 .event-time {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--gold);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -553,7 +553,7 @@ nav ul li a:hover {
     min-width: 76px;
     text-align: right;
     padding-right: 1rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
     flex-shrink: 0;
     font-family: 'Montserrat', sans-serif;
     white-space: nowrap;
@@ -566,7 +566,7 @@ nav ul li a:hover {
 
 .event-content h5 {
     margin: 0;
-    color: #fff;
+    color: var(--primary-color);
     font-size: 0.9rem;
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
@@ -575,7 +575,7 @@ nav ul li a:hover {
 
 .event-content p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.65);
+    color: #888;
     font-size: 0.78rem;
     line-height: 1.3;
 }
