@@ -452,14 +452,7 @@ nav ul li a:hover {
 }
 
 .horizontal-timeline::before {
-    content: '';
-    position: absolute;
-    top: 80px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
-    z-index: 1;
+    display: none;
 }
 
 .timeline-item {
@@ -483,14 +476,7 @@ nav ul li a:hover {
 }
 
 .timeline-icon {
-    font-size: 2rem;
-    margin-bottom: 0.3rem;
-    background: white;
-    padding: 0.4rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    filter: grayscale(100%);
+    display: none;
 }
 
 .timeline-date {
@@ -507,13 +493,7 @@ nav ul li a:hover {
 }
 
 .timeline-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+    display: none;
 }
 
 .timeline-content {
