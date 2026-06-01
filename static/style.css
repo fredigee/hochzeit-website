@@ -37,21 +37,46 @@ h1, h2, h3 {
 }
 
 .hero {
+    display: grid;
     width: 100%;
-    min-height: 20vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-                url('/static/background_wedding.jpeg');
-    background-size: cover;
-    background-position: center top;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.hero-bg-img {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    grid-area: 1 / 1;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content {
+    grid-area: 1 / 1;
+    z-index: 2;
     color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    margin-bottom: 1rem;
-    margin-top: 0;
+    padding: 80px 2rem 2rem;
+}
+
+/* Keep the nav in the hero's stacked cell, pinned to the top over the image */
+.hero > nav {
+    grid-area: 1 / 1;
+    align-self: start;
+    z-index: 3;
+    width: 100%;
 }
 
 
@@ -87,16 +112,6 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #666666;
-}
-
-.hero-content {
-    padding: 0.5rem 2rem 56px;
-    margin-top: 56px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .hero-content h1 {
@@ -226,13 +241,37 @@ nav ul li a:hover {
 /* Responsive Design - Mobile */
 @media (max-width: 768px) {
     .hero {
-        min-height: auto;
         margin-top: 0;
     }
 
+    /* Wide image is too short at narrow widths to hold the title + countdown,
+       so the content defines the hero height and the image covers it instead
+       of spilling the countdown onto blank space below. */
+    .hero {
+        position: relative;
+    }
+
+    .hero-bg-img,
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-bg-img {
+        object-fit: cover;
+        object-position: center;
+    }
+
     .hero-content {
-        margin-top: 60px;
-        padding: 0.5rem 1rem 2rem;
+        position: relative;
+        min-height: 60vh;
+        padding-top: 60px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem;
         width: 100%;
     }
     
