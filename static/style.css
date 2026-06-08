@@ -735,7 +735,7 @@ nav ul li a:hover {
 
 /* Dresscode Styles */
 .dresscode-intro {
-    color: #888;
+    color: #000;
     font-size: 0.82rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -762,7 +762,7 @@ nav ul li a:hover {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     letter-spacing: 0.06em;
-    color: var(--primary-color);
+    color: #000;
     margin-bottom: 1rem;
     font-style: italic;
 }
@@ -775,7 +775,7 @@ nav ul li a:hover {
 
 .dresscode-list li {
     font-size: 0.85rem;
-    color: #444;
+    color: #000;
     padding: 0.3rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     letter-spacing: 0.02em;
@@ -808,14 +808,23 @@ nav ul li a:hover {
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #aaa;
+    color: #000;
 }
 
 .dresscode-nogo-items {
     font-size: 0.82rem;
-    color: #888;
+    color: #000;
     text-align: center;
     line-height: 1.8;
+}
+
+.dresscode-note {
+    text-align: center;
+    font-size: 0.72rem;
+    font-style: italic;
+    color: #000;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
